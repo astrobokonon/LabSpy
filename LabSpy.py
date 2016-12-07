@@ -103,7 +103,7 @@ def main():
     while True:
         now = datetime.datetime.utcnow()
         temp, humi, crc = am.sense()
-        lstr = "%s %0.1f %0.1f %s" % (now, temp, humi, (crc == 1))
+        lstr = "%s %0.2f %0.2f %s" % (now, temp, humi, (crc == 1))
         # Putting this into the rotating log for now so it's easy to check on
         writeDB([now, temp, humi, (crc == 1)], 
                 "CourtyardPalmdale.db", which="LabEnv")

@@ -73,10 +73,21 @@ def int2td(ts, ts_mult=TS_MULT_us):
 
 def main():
     times, temps, humis = searchDB('./CourtyardPalmdale.db')
-    
-    plt.plot(times, temps, color='red', label="Temperature")
-    plt.plot(times, humis, color='blue', label="Humidity")
-    plt.legend()
+
+    fig = plt.figure()
+    ax = plt.axes()    
+    ax.plot(times, temps, color='red', label="Temperature")
+    ax2 = ax.twinx()
+    ax2.plot(times, humis, color='blue', label="Humidity")
+
+    ax.set_xlabel("Time (UTC)")
+    ax.set_ylabel("Temperature (C)", color='r')
+    ax2.set_ylabel("Humidity (%)", color='b')
+
+    ax.set_ylim([10., 28.])
+    ax2.set_ylim([0, 100.])
+    fig.autofmt_xdate()
+    fig.tight_layout()
     plt.savefig("./storedsofar.png")
     plt.close()
 
