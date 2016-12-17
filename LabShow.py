@@ -72,7 +72,7 @@ def int2td(ts, ts_mult=TS_MULT_us):
 
 
 def main():
-    times, temps, humis = searchDB('./CourtyardPalmdale.db')
+    times, temps, humis = searchDB('./CourtyardPalmdale.db', intval=-30, intkind='days')
 
     fig = plt.figure()
     ax = plt.axes()    
